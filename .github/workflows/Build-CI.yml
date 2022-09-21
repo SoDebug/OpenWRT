@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Main OpenWrt(Branch on K2p)
+name: Build(Branch on K2p)
 
 on:
   push:
@@ -38,7 +38,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
