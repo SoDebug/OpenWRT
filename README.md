@@ -102,6 +102,11 @@ done
 ```
 <center>以上就是基本的使用，明白以上可以保证构建出可以使用的固件</center>
 
+## 进阶？
+我所摸索到的进阶是对``workflows``文件的配置，这个你们可以自行摸索
+
+## 以下是Lede的原版介绍
+
 如何编译自己需要的 OpenWrt 固件 [How to build your Openwrt firmware](./README_EN.md)
 
 ## 官方讨论群
