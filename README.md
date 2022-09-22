@@ -106,7 +106,7 @@ done
 ### ``yml``文件变量的作用以及配置（来自[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)）
 |环境变量|功能|默认值|
 |:----:|:----:|:----:|
-|REPO_URL|https://github.com/SoDebug/OpenWRTResourseCode|
+|REPO_URL|源码仓库地址|https://github.com/SoDebug/OpenWRTResourseCode|
 |REPO_BRANCH|源码分支|dev|
 |FEEDS_CONF|自定义feeds.conf.default文件名|feeds.conf.default|
 |CONFIG_FILE|自定义.config文件名|device_config/device_info.config|
