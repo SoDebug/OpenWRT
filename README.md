@@ -103,7 +103,21 @@ done
 <center>以上就是基本的使用，明白以上可以保证构建出可以使用的固件</center>
 
 ## 进阶？
-我所摸索到的进阶是对``workflows``文件的配置，这个你们可以自行摸索
+``yml``文件变量的作用以及配置（来自[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)）
+|环境变量|功能|
+|:----:|:----:|
+|REPO_URL|源码仓库地址|
+|REPO_BRANCH|源码分支|
+|FEEDS_CONF|自定义feeds.conf.default文件名|
+|CONFIG_FILE|自定义.config文件名|
+|DIY_P1_SH|自定义diy-part1.sh文件名|
+|DIY_P2_SH|自定义diy-part2.sh文件名|
+|UPLOAD_BIN_DIR|上传 bin 目录。即包含所有 ipk 文件和固件的目录。默认false||
+|UPLOAD_FIRMWARE|上传固件目录。默认true|
+|UPLOAD_COWTRANSFER|上传固件到奶牛快传。默认false|
+|UPLOAD_WERANSFER|上传固件到 WeTransfer 。默认false|
+|UPLOAD_RELEASE|上传固件到 releases 。默认false|
+|TZ|时区设置|
 
 ## 以下是Lede的原版介绍
 
