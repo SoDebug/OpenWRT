@@ -117,7 +117,7 @@ done
 |UPLOAD_COWTRANSFER|上传固件到奶牛快传。|false|
 |UPLOAD_WERANSFER|上传固件到 WeTransfer 。|false|
 |UPLOAD_RELEASE|上传固件到 releases 。|false|
-|TZ|时区设置|
+|TZ|时区设置|Asia/Shanghai|
 
 ### 源码更新自动编译
 - 在``Github``账户设置中找到``Developer Settings``，创建 ``Personal access token(PAT)`` ，勾选``repo``权限，这将用于自动触发编译工作流程。
