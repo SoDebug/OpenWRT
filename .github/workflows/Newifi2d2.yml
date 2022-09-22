@@ -13,7 +13,7 @@ name: Build for Newifi2D2
 on:
   push:
     branches: 
-      - dev
+      - master
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -29,7 +29,7 @@ env:
   CONFIG_FILE: device_config/newifi2.config
   DIY_P1_SH: device_config/outer_repo.sh
   DIY_P2_SH: device_config/kernel_mod.sh
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
@@ -38,7 +38,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -181,11 +181,11 @@ jobs:
         retain_days: 1
         keep_minimum_runs: 3
 
-    - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 3
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Remove old Releases
+    #   uses: dev-drprasad/delete-older-releases@v0.1.0
+    #   if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+    #   with:
+    #     keep_latest: 3
+    #     delete_tags: true
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
