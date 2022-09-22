@@ -1,4 +1,18 @@
-# 这里是克隆来自Lean 的 Openwrt 源码仓库
+# 使用方法？
+## 项目简介
+用途：这里主要是用于云编译+UA2F防检测部署
+其他用处：可以自定义编译自己想要的openwrt固件
+
+## 项目鸣谢
+- [Zxilly](https://github.com/Zxilly)大佬的项目[UA2F](https://github.com/Zxilly/UA2F)
+这是Z佬的官方部署教程:[OpenWrt 编译与防检测部署教程](https://sunbk201public.notion.site/sunbk201public/OpenWrt-f59ae1a76741486092c27bc24dbadc59)
+- [MoorCorPa](https://github.com/MoorCorPa)大佬的项目例程:[Actions-immortalWrt-UA2F](https://github.com/MoorCorPa/Actions-immortalWrt-UA2F)
+- [P3TERX](https://github.com/P3TERX)的编译模板:[Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
+这是P佬的官方部署博客:[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
+
+
+
+
 如何编译自己需要的 OpenWrt 固件 [How to build your Openwrt firmware](./README_EN.md)
 
 ## 官方讨论群
