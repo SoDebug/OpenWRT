@@ -103,7 +103,7 @@ done
 <center>以上就是基本的使用，明白以上可以保证构建出可以使用的固件</center>
 
 ## 进阶？
-``yml``文件变量的作用以及配置（来自[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)）
+### ``yml``文件变量的作用以及配置（来自[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)）
 |环境变量|功能|
 |:----:|:----:|
 |REPO_URL|源码仓库地址|
@@ -118,6 +118,16 @@ done
 |UPLOAD_WERANSFER|上传固件到 WeTransfer 。默认false|
 |UPLOAD_RELEASE|上传固件到 releases 。默认false|
 |TZ|时区设置|
+
+### 源码更新自动编译
+- 在``Github``账户设置中找到``Developer Settings``，创建 ``Personal access token(PAT)`` ，勾选``repo``权限，这将用于自动触发编译工作流程。
+- 然后点击自己仓库的``Settings``选项卡，再点击``Secrets``。添加名为``ACTIONS_TRIGGER_PAT``的加密环境变量，保存刚刚创建的``PAT``。
+- 在 ``Actions`` 页面选择``Update Checker``，点击``Run workflow``手动进行一次测试运行。如果没有报错且 ``OpenWrt`` 编译工作流程被触发，则代表测试通过。
+- 最后编辑``Update Checker``的 ``workflow`` 文件（``.github/workflows/update-checker.yml``），取消注释（删除#）定时触发相关的部分。这里可以根据 ``cron`` 格式来设定检测的时间，时区为 UTC 。
+```
+#  schedule:
+#    - cron: 0 */18 * * *
+```
 
 ## 以下是Lede的原版介绍
 
