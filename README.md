@@ -22,12 +22,12 @@
 - ``device_info.config``:用于基本的设备配置文件（包含设备的型号、需要启用的插件）
 代码内容如下：
 ```
+# 以下三行代码用于配置固件型号
 CONFIG_TARGET_x86=y
 CONFIG_TARGET_x86_64=y
 CONFIG_TARGET_x86_64_DEVICE_generic=y
 
-# 在上边编辑自己的.config，或者复制别人的过来用，编译即可
-
+# 以下代码用于配置固件所需要插件
 CONFIG_PACKAGE_ua2f=y
 CONFIG_PACKAGE_ipset=y
 CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
@@ -47,7 +47,60 @@ CONFIG_LUCI_LANG_zh_Hans=y
 CONFIG_PACKAGE_luci-theme-argon=y
 CONFIG_PACKAGE_luci-app-argon-config=y
 ```
+- ``outer_repo.sh``在更新与安装 feeds 的前执行,作用是拉取仓库里没有的插件的源码
+内容如下：
+```
+#!/bin/bash
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part1.sh
+# Description: OpenWrt DIY script part 1 (Before Update feeds)
+#
 
+# Uncomment a feed source
+#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+
+# Add a feed source
+#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+git clone https://github.com/CHN-beta/rkp-ipid package/rkp-ipid
+git clone https://github.com/Zxilly/UA2F package/UA2F
+```
+- ``kernel_mod.sh``在更新与安装 feeds 的后执行，作用是配置一些内核层面的修改
+代码如下：
+```
+#!/bin/bash
+#
+# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+#
+
+# CONFIG_NETFILTER=y
+# CONFIG_NETFILTER_NETLINK=y
+# CONFIG_NETFILTER_NETLINK_GLUE_CT=y
+# CONFIG_NETFILTER_NETLINK_LOG=y
+# CONFIG_NF_CONNTRACK=y
+# CONFIG_NF_CT_NETLINK=y
+
+# Modify default IP
+#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+target=$(grep "^CONFIG_TARGET" .config --max-count=1 | awk -F "=" '{print $1}' | awk -F "_" '{print $3}')
+for configFile in $(ls target/linux/$target/config*)
+do
+    echo -e "\nCONFIG_NETFILTER_NETLINK_GLUE_CT=y" >> $configFile
+done
+```
+<center>以上就是基本的使用，明白以上可以保证构建出可以使用的固件</center>
 
 如何编译自己需要的 OpenWrt 固件 [How to build your Openwrt firmware](./README_EN.md)
 
