@@ -14,6 +14,9 @@ on:
   # push:
   #   branches: 
   #     - dev
+  label:
+    types:
+      - created
   repository_dispatch:
   workflow_dispatch:
     inputs:
