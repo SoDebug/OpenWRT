@@ -1,4 +1,5 @@
-# 使用方法？
+# 《项目指北？》
+
 ## 项目简介
 用途：这里主要是用于云编译+UA2F防检测部署
 其他用处：可以自定义编译自己想要的openwrt固件
@@ -10,7 +11,42 @@
 - [P3TERX](https://github.com/P3TERX)的编译模板:[Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
 这是P佬的官方部署博客:[使用 GitHub Actions 云编译 OpenWrt](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
+## 分支介绍
+- [master分支](https://github.com/SoDebug/OpenWRTResourseCode)用于同步[lede](https://github.com/coolsnowwolf/lede)的仓库源码，保持编译源始终保持最新~~还没写这部分的代码~~
+- [dev分支](https://github.com/SoDebug/OpenWRTResourseCode/tree/dev)包含了自定义编译的脚本，在后面会详细介绍，其默认使用``dev分支``的代码进行编译(这是为了防止新源码有故障，在不能保证源码可用情况下不要立即同步最新源)
+- [k2p分支](https://github.com/SoDebug/OpenWRTResourseCode/tree/k2p)专用于编译k2p固件，其实和``dev分支``区别不大，就是更改了编译固件型号，几行代码的区别
 
+## 使用办法
+### 这里以``dev分支``为例
+- ``device_config``:用于存放编译固件型号的文件夹
+- ``device_info.config``:用于基本的设备配置文件（包含设备的型号、需要启用的插件）
+代码内容如下：
+```
+CONFIG_TARGET_x86=y
+CONFIG_TARGET_x86_64=y
+CONFIG_TARGET_x86_64_DEVICE_generic=y
+
+# 在上边编辑自己的.config，或者复制别人的过来用，编译即可
+
+CONFIG_PACKAGE_ua2f=y
+CONFIG_PACKAGE_ipset=y
+CONFIG_PACKAGE_iptables-mod-conntrack-extra=y
+CONFIG_PACKAGE_iptables-mod-filter=y
+CONFIG_PACKAGE_iptables-mod-ipopt=y
+CONFIG_PACKAGE_iptables-mod-nfqueue=y			   
+CONFIG_PACKAGE_iptables-mod-u32=y
+
+CONFIG_PACKAGE_kmod-ipt-conntrack-extra=y
+CONFIG_PACKAGE_kmod-ipt-filter=y
+CONFIG_PACKAGE_kmod-ipt-ipopt=y
+CONFIG_PACKAGE_kmod-ipt-nfqueue=y			   
+CONFIG_PACKAGE_kmod-ipt-u32=y
+CONFIG_PACKAGE_kmod-nfnetlink-queue=y
+
+CONFIG_LUCI_LANG_zh_Hans=y
+CONFIG_PACKAGE_luci-theme-argon=y
+CONFIG_PACKAGE_luci-app-argon-config=y
+```
 
 
 如何编译自己需要的 OpenWrt 固件 [How to build your Openwrt firmware](./README_EN.md)
