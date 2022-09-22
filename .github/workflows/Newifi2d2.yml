@@ -14,7 +14,7 @@ on:
   # push:
   #   branches: 
   #     - dev
-  label:
+  release:
     types:
       - created
   repository_dispatch:
