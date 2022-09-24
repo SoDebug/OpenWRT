@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build for K2
+name: Build for K2a
 
 on:
   # push:
