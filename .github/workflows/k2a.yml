@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/SoDebug/OpenWRTResourseCode
   REPO_BRANCH: dev
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: device_config/K2.config
+  CONFIG_FILE: device_config/k2a.config
   DIY_P1_SH: device_config/outer_repo.sh
   DIY_P2_SH: device_config/kernel_mod.sh
   UPLOAD_BIN_DIR: true
