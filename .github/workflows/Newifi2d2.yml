@@ -11,9 +11,9 @@
 name: Build for Newifi2D2
 
 on:
-  push:
-    branches: 
-      - master
+  # push:
+  #   branches: 
+  #     - master
   repository_dispatch:
   workflow_dispatch:
     inputs:
