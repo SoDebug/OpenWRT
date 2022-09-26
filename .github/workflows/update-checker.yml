@@ -12,7 +12,7 @@
 name: Update Checker
 
 env:
-  REPO_URL: https://github.com/SoDebug/OpenWRTResourseCode
+  REPO_URL: https://github.com/SoDebug/Fold
   REPO_BRANCH: master
 
 on:
