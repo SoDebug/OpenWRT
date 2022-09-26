@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build for x86_x64(Local_Complie)
+name: Build for x86_x64
 
 on:
   # push:
@@ -71,8 +71,9 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds & Install feeds
-      run: ./scripts/feeds update -a
-      run: ./scripts/feeds install -a
+      run: |
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
       
     - name: Import queue
       run: svn checkout https://github.com/openwrt/packages/trunk/libs/libnetfilter-queue package/libs/libnetfilter-queue
