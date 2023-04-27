@@ -49,13 +49,17 @@ jobs:
         sudo apt-get update
         sudo apt-get -qq remove --purge mysql* php* google* firefox ghc azure-cli \
         dotnet* powershell ruby-full zulu* hhvm llvm*
+        
         sudo rm -rf /usr/local/lib/android
         sudo rm -rf /var/lib/docker
         sudo rm -rf /usr/share/dotnet
         sudo rm -rf /opt/hostedtoolcache/go /opt/hostedtoolcache/Ruby /opt/hostedtoolcache/node
+        
         sudo curl -s https://build-scripts.immortalwrt.eu.org/init_build_environment.sh | sudo bash
+        
         sudo apt-get -qq autoremove --purge
         sudo apt-get -qq clean
+        
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
@@ -183,16 +187,6 @@ jobs:
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
         
-    - name: Upload firmware to release
-      uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: Main-${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/*
-
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
       with:
