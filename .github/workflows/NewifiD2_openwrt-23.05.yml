@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt Newifi-D2(openwrt-23.05)
+name: Build OpenWrt Newifi-D2(Lede)
 
 on:
   repository_dispatch:
@@ -26,8 +26,8 @@ on:
   #watch:
   # types: [started]
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt
-  REPO_BRANCH: openwrt-23.05
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   CONFIG_FILE: device_config/NewifiD2.devices
   DIY_P1_SH: device_config/Before_Update_feeds.sh
   DIY_P2_SH: device_config/After_Update_feeds.sh
