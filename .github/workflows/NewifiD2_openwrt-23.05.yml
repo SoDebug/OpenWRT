@@ -28,7 +28,6 @@ on:
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-23.05
-  FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: device_config/NewifiD2.devices
   DIY_P1_SH: device_config/Before_Update_feeds.sh
   DIY_P2_SH: device_config/After_Update_feeds.sh
@@ -77,7 +76,6 @@ jobs:
 
     - name: Load custom feeds
       run: |
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
