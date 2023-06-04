@@ -185,7 +185,7 @@ jobs:
         echo "WEB登陆账户：root" >> release.txt
         echo "密码：" >> release.txt
         echo "固件源码：https://github.com/immortalwrt/immortalwrt.git" >> release.txt
-        echo "OpenWRT源码版本：23.05" >> release.txt
+        echo "OpenWRT源码版本：Lede" >> release.txt
         echo "软件源推荐：https://downloads.immortalwrt.org/snapshots/packages/mipsel_24kc/" >> release.txt
         echo "源码最近提交信息:" >> release.txt        
         echo "${{ env.useVersionInfo }}" >> release.txt
